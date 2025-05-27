@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsFa extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsFa({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsFa({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.fa,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsFa extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsFa _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsFa $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsFa(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsCommonFa common = _TranslationsCommonFa._(_root);
@@ -66,6 +69,7 @@ class _TranslationsHomeFa extends TranslationsHomeEn {
 	@override String get welcome => 'خوش آمدید';
 	@override String get invalidFormat => 'فایلی که انتخاب کرده اید پشتیبانی نمی شود. لطفاً یک فایل sbn، sbn2، sba یا pdf را انتخاب کنید.';
 	@override String get noFiles => 'فایلی پیدا نشد';
+	@override String get noPreviewAvailable => 'پیش نمایش موجود نیست';
 	@override String get createNewNote => 'برای ساخت یادداشت دکمه + را بزنید';
 	@override String get backFolder => 'به پوشه قبلی برگردید';
 	@override late final _TranslationsHomeNewFolderFa newFolder = _TranslationsHomeNewFolderFa._(_root);
@@ -704,13 +708,13 @@ class _TranslationsEditorMenuFa extends TranslationsEditorMenuEn {
 	@override String get duplicatePage => 'تکرار صفحه';
 	@override String get deletePage => 'حذف صفحه';
 	@override String get lineHeight => 'ارتفاع خط';
-	@override String get lineThickness => 'ضخامت خط';
-	@override String get lineThicknessDescription => 'ضخامت خط پس زمینه';
 	@override String get backgroundImageFit => 'مناسب تصویر پس زمینه';
 	@override String get backgroundPattern => 'الگوی پس زمینه';
 	@override String get import => 'واردکردن';
 	@override late final _TranslationsEditorMenuBoxFitsFa boxFits = _TranslationsEditorMenuBoxFitsFa._(_root);
 	@override late final _TranslationsEditorMenuBgPatternsFa bgPatterns = _TranslationsEditorMenuBgPatternsFa._(_root);
+	@override String get lineThickness => 'ضخامت خط';
+	@override String get lineThicknessDescription => 'ضخامت خط پس زمینه';
 	@override String get watchServer => 'مراقب به روز رسانی ها در سرور باشید';
 	@override String get watchServerReadOnly => 'هنگام تماشای سرور، ویرایش غیرفعال است';
 	@override String get lineHeightDescription => 'همچنین اندازه متن را برای یادداشت های تایپ شده کنترل می کند';

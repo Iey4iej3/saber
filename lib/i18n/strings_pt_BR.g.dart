@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsPtBr extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsPtBr({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsPtBr({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.ptBr,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsPtBr extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsPtBr _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsPtBr $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsPtBr(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsCommonPtBr common = _TranslationsCommonPtBr._(_root);
@@ -66,6 +69,7 @@ class _TranslationsHomePtBr extends TranslationsHomeEn {
 	@override String get welcome => 'Bem-vindo(a) ao Saber';
 	@override String get invalidFormat => 'O arquivo que você selecionou não é suportado. Por favor selecione um arquivo .sbn, .sbn2, .sba ou .pdf.';
 	@override String get noFiles => 'Nenhum arquivo encontrado';
+	@override String get noPreviewAvailable => 'Nenhuma visualização disponível';
 	@override String get createNewNote => 'Toque no botão + para criar uma nova nota';
 	@override String get backFolder => 'Retornar para a pasta anterior';
 	@override late final _TranslationsHomeNewFolderPtBr newFolder = _TranslationsHomeNewFolderPtBr._(_root);
@@ -704,13 +708,13 @@ class _TranslationsEditorMenuPtBr extends TranslationsEditorMenuEn {
 	@override String get duplicatePage => 'Duplicar página';
 	@override String get deletePage => 'Apagar página';
 	@override String get lineHeight => 'Altura da linha';
-	@override String get lineThickness => 'Espessura da linha';
-	@override String get lineThicknessDescription => 'Espessura da linha de fundo';
 	@override String get backgroundImageFit => 'Ajustar a imagem de plano de fundo';
 	@override String get backgroundPattern => 'Padrão de plano de fundo';
 	@override String get import => 'Importar';
 	@override late final _TranslationsEditorMenuBoxFitsPtBr boxFits = _TranslationsEditorMenuBoxFitsPtBr._(_root);
 	@override late final _TranslationsEditorMenuBgPatternsPtBr bgPatterns = _TranslationsEditorMenuBgPatternsPtBr._(_root);
+	@override String get lineThickness => 'Espessura da linha';
+	@override String get lineThicknessDescription => 'Espessura da linha de fundo';
 	@override String get watchServer => 'Fique atento às atualizações no servidor';
 	@override String get watchServerReadOnly => 'A edição está desativada enquanto observa o servidor';
 	@override String get lineHeightDescription => 'Também controla o tamanho do texto para notas digitadas';

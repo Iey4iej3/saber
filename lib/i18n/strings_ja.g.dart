@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsJa extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsJa({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsJa({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.ja,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsJa extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsJa _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsJa $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsJa(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsCommonJa common = _TranslationsCommonJa._(_root);
@@ -65,6 +68,7 @@ class _TranslationsHomeJa extends TranslationsHomeEn {
 	@override late final _TranslationsHomeCreateJa create = _TranslationsHomeCreateJa._(_root);
 	@override String get welcome => 'ようこそSaberへ';
 	@override String get noFiles => 'ファイルが見つかりません';
+	@override String get noPreviewAvailable => 'プレビューは利用できません';
 	@override String get createNewNote => '+ボタンで新しくメモを作成';
 	@override late final _TranslationsHomeNewFolderJa newFolder = _TranslationsHomeNewFolderJa._(_root);
 	@override late final _TranslationsHomeRenameNoteJa renameNote = _TranslationsHomeRenameNoteJa._(_root);
@@ -704,12 +708,12 @@ class _TranslationsEditorMenuJa extends TranslationsEditorMenuEn {
 	@override String get duplicatePage => '重複したページ';
 	@override String get deletePage => 'ページの削除';
 	@override String get lineHeight => '行の高さ';
-	@override String get lineThickness => '線の厚さ';
-	@override String get lineThicknessDescription => '背景線の厚さ';
 	@override String get backgroundPattern => '背景パターン';
 	@override String get import => 'インポート';
 	@override late final _TranslationsEditorMenuBoxFitsJa boxFits = _TranslationsEditorMenuBoxFitsJa._(_root);
 	@override late final _TranslationsEditorMenuBgPatternsJa bgPatterns = _TranslationsEditorMenuBgPatternsJa._(_root);
+	@override String get lineThickness => '線の厚さ';
+	@override String get lineThicknessDescription => '背景線の厚さ';
 	@override String get watchServer => 'サーバー上の更新を監視する';
 	@override String get watchServerReadOnly => 'サーバー監視中は編集できません';
 	@override String get lineHeightDescription => '入力されたメモのテキスト サイズも制御します';

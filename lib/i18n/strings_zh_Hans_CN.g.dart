@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsZhHansCn extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsZhHansCn({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsZhHansCn({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.zhHansCn,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsZhHansCn extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsZhHansCn _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsZhHansCn $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsZhHansCn(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsCommonZhHansCn common = _TranslationsCommonZhHansCn._(_root);
@@ -66,6 +69,7 @@ class _TranslationsHomeZhHansCn extends TranslationsHomeEn {
 	@override String get welcome => '欢迎使用 Saber';
 	@override String get invalidFormat => '不支持该文件。请选择 .sbn、.sbn2、.sba 或 .pdf 文件。';
 	@override String get noFiles => '未找到文件';
+	@override String get noPreviewAvailable => '没有预览';
 	@override String get createNewNote => '点击 + 按钮新建一个笔记';
 	@override String get backFolder => '回到上一个文件夹';
 	@override late final _TranslationsHomeNewFolderZhHansCn newFolder = _TranslationsHomeNewFolderZhHansCn._(_root);
@@ -707,8 +711,6 @@ class _TranslationsEditorMenuZhHansCn extends TranslationsEditorMenuEn {
 	@override String get deletePage => '删除页面';
 	@override String get lineHeight => '行高';
 	@override String get lineHeightDescription => '还控制已输入的笔记的文本大小';
-	@override String get lineThickness => '线厚度';
-	@override String get lineThicknessDescription => '背景线厚度';
 	@override String get backgroundImageFit => '背景图像拟合';
 	@override String get backgroundPattern => '背景图案';
 	@override String get import => '导入';
@@ -716,6 +718,8 @@ class _TranslationsEditorMenuZhHansCn extends TranslationsEditorMenuEn {
 	@override String get watchServerReadOnly => '监视服务器时禁用编辑';
 	@override late final _TranslationsEditorMenuBoxFitsZhHansCn boxFits = _TranslationsEditorMenuBoxFitsZhHansCn._(_root);
 	@override late final _TranslationsEditorMenuBgPatternsZhHansCn bgPatterns = _TranslationsEditorMenuBgPatternsZhHansCn._(_root);
+	@override String get lineThickness => '线厚度';
+	@override String get lineThicknessDescription => '背景线厚度';
 }
 
 // Path: editor.newerFileFormat

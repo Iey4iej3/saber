@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsAr extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsAr({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsAr({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.ar,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsAr extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsAr _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsAr $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsAr(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsCommonAr common = _TranslationsCommonAr._(_root);
@@ -66,6 +69,7 @@ class _TranslationsHomeAr extends TranslationsHomeEn {
 	@override String get welcome => 'مرحباً بك في Saber';
 	@override String get invalidFormat => ' صيغة الملف الذي اخترته ليست مدعومة, الرجاء اختيار ملف  sbn او sbn2 او sba او pdf ';
 	@override String get noFiles => 'لم يتم العثور على ملفات';
+	@override String get noPreviewAvailable => 'لا معاينة متاحة';
 	@override String get createNewNote => 'اضغط على زر + لإنشاء ملاحظة جديدة';
 	@override String get backFolder => 'الرجوع الى المجلد السابق';
 	@override late final _TranslationsHomeNewFolderAr newFolder = _TranslationsHomeNewFolderAr._(_root);
@@ -707,8 +711,6 @@ class _TranslationsEditorMenuAr extends TranslationsEditorMenuEn {
 	@override String get deletePage => 'حذف الصفحة';
 	@override String get lineHeight => 'ارتفاع خط';
 	@override String get lineHeightDescription => 'يتحكم أيضًا في حجم النص للملاحظات المكتوبة';
-	@override String get lineThickness => 'سمك الخط';
-	@override String get lineThicknessDescription => 'سماكة خط الخلفية';
 	@override String get backgroundImageFit => 'تناسب صورة الخلفية';
 	@override String get backgroundPattern => 'نمط الخلفية';
 	@override String get import => 'يستورد';
@@ -716,6 +718,8 @@ class _TranslationsEditorMenuAr extends TranslationsEditorMenuEn {
 	@override String get watchServerReadOnly => 'تم تعطيل التحرير أثناء مراقبة الخادم';
 	@override late final _TranslationsEditorMenuBoxFitsAr boxFits = _TranslationsEditorMenuBoxFitsAr._(_root);
 	@override late final _TranslationsEditorMenuBgPatternsAr bgPatterns = _TranslationsEditorMenuBgPatternsAr._(_root);
+	@override String get lineThickness => 'سمك الخط';
+	@override String get lineThicknessDescription => 'سماكة خط الخلفية';
 }
 
 // Path: editor.newerFileFormat

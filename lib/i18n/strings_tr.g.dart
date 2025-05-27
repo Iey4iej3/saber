@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsTr extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsTr({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsTr({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.tr,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsTr extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsTr _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsTr $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsTr(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsCommonTr common = _TranslationsCommonTr._(_root);
@@ -66,6 +69,7 @@ class _TranslationsHomeTr extends TranslationsHomeEn {
 	@override String get welcome => 'Saber\'a hoş geldiniz';
 	@override String get invalidFormat => 'Seçtiğiniz dosya desteklenmiyor. Lütfen bir .sbn, .sbn2, .sba veya .pdf dosyası seçin.';
 	@override String get noFiles => 'Dosya yok';
+	@override String get noPreviewAvailable => 'Önizleme yok';
 	@override String get createNewNote => 'Yeni bir not oluşturmak için + butonuna tıklayınız';
 	@override String get backFolder => 'Önceki klasöre dön';
 	@override late final _TranslationsHomeNewFolderTr newFolder = _TranslationsHomeNewFolderTr._(_root);
@@ -707,8 +711,6 @@ class _TranslationsEditorMenuTr extends TranslationsEditorMenuEn {
 	@override String get deletePage => 'Sayfayı sil';
 	@override String get lineHeight => 'Satır aralığı';
 	@override String get lineHeightDescription => 'Klavye girişi olan notların metin boyutunu da kontrol eder';
-	@override String get lineThickness => 'Çizgi kalınlığı';
-	@override String get lineThicknessDescription => 'Arka plan çizgisi kalınlığı';
 	@override String get backgroundImageFit => 'Arkaplan görüntüsünü sığdır';
 	@override String get backgroundPattern => 'Arkaplan deseni';
 	@override String get import => 'İçe aktar';
@@ -716,6 +718,8 @@ class _TranslationsEditorMenuTr extends TranslationsEditorMenuEn {
 	@override String get watchServerReadOnly => 'Sunucu izlenirken düzenleme yapılamaz';
 	@override late final _TranslationsEditorMenuBoxFitsTr boxFits = _TranslationsEditorMenuBoxFitsTr._(_root);
 	@override late final _TranslationsEditorMenuBgPatternsTr bgPatterns = _TranslationsEditorMenuBgPatternsTr._(_root);
+	@override String get lineThickness => 'Çizgi kalınlığı';
+	@override String get lineThicknessDescription => 'Arka plan çizgisi kalınlığı';
 }
 
 // Path: editor.newerFileFormat

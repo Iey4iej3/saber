@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsIt extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsIt({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsIt({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.it,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsIt extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsIt _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsIt $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsIt(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsCommonIt common = _TranslationsCommonIt._(_root);
@@ -66,6 +69,7 @@ class _TranslationsHomeIt extends TranslationsHomeEn {
 	@override String get welcome => 'Benvenuto su Saber';
 	@override String get invalidFormat => 'Il file selezionato non è supportato. Seleziona un file .sbn, .sbn2, .sba o .pdf.';
 	@override String get noFiles => 'Nessun file trovato';
+	@override String get noPreviewAvailable => 'Nessuna anteprima disponibile';
 	@override String get createNewNote => 'Tocca il pulsante + per creare una nuova nota';
 	@override String get backFolder => 'Torna alla cartella precedente';
 	@override late final _TranslationsHomeNewFolderIt newFolder = _TranslationsHomeNewFolderIt._(_root);
@@ -392,7 +396,7 @@ class _TranslationsSettingsPrefDescriptionsIt extends TranslationsSettingsPrefDe
 	final TranslationsIt _root; // ignore: unused_field
 
 	// Translations
-	@override String get hyperlegibleFont => 'Atkinson Hyperlegible aumenta la leggibilità per i lettori ipovedenti';
+	@override String get hyperlegibleFont => 'Atkinson Iperleggibile aumenta la leggibilità per i lettori ipovedenti';
 	@override String get allowInsecureConnections => '(Non consigliato) Consenti a Saber di connettersi ai server con certificati autofirmati/non attendibili';
 	@override String get preferGreyscale => 'Per display e-ink';
 	@override String get autoClearWhiteboardOnExit => 'Sarà comunque sincronizzato con gli altri tuoi dispositivi';
@@ -707,8 +711,6 @@ class _TranslationsEditorMenuIt extends TranslationsEditorMenuEn {
 	@override String get deletePage => 'Elimina pagina';
 	@override String get lineHeight => 'Altezza della linea';
 	@override String get lineHeightDescription => 'Controlla anche la dimensione del testo per le note digitate';
-	@override String get lineThickness => 'Spessore della linea';
-	@override String get lineThicknessDescription => 'Spessore della linea di sfondo';
 	@override String get backgroundImageFit => 'Adattamento immagine di sfondo';
 	@override String get backgroundPattern => 'Modello di sfondo';
 	@override String get import => 'Importa';
@@ -716,6 +718,8 @@ class _TranslationsEditorMenuIt extends TranslationsEditorMenuEn {
 	@override String get watchServerReadOnly => 'La modifica è disabilitata mentre si guarda il server';
 	@override late final _TranslationsEditorMenuBoxFitsIt boxFits = _TranslationsEditorMenuBoxFitsIt._(_root);
 	@override late final _TranslationsEditorMenuBgPatternsIt bgPatterns = _TranslationsEditorMenuBgPatternsIt._(_root);
+	@override String get lineThickness => 'Spessore della linea';
+	@override String get lineThicknessDescription => 'Spessore della linea di sfondo';
 }
 
 // Path: editor.newerFileFormat

@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsDe extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsDe({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsDe({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.de,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsDe extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsDe _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsDe $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsDe(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsCommonDe common = _TranslationsCommonDe._(_root);
@@ -66,6 +69,7 @@ class _TranslationsHomeDe extends TranslationsHomeEn {
 	@override String get welcome => 'Willkommen bei Saber';
 	@override String get invalidFormat => 'Die ausgewählte Datei wird nicht unterstützt. Bitte wähle eine Datei mit dem Format sbn, sbn2, sba oder pdf.';
 	@override String get noFiles => 'Keine Dateien gefunden';
+	@override String get noPreviewAvailable => 'Keine Vorschau verfügbar';
 	@override String get createNewNote => 'Drücke die + Schaltfläche, um eine neue Notiz zu erstellen';
 	@override String get backFolder => 'Zum vorherigen Ordner zurück gehen';
 	@override late final _TranslationsHomeNewFolderDe newFolder = _TranslationsHomeNewFolderDe._(_root);
@@ -707,8 +711,6 @@ class _TranslationsEditorMenuDe extends TranslationsEditorMenuEn {
 	@override String get deletePage => 'Seite löschen';
 	@override String get lineHeight => 'Zeilenhöhe';
 	@override String get lineHeightDescription => 'Bestimmt ebenfalls die Textgröße der getippten Notizen';
-	@override String get lineThickness => 'Liniendicke';
-	@override String get lineThicknessDescription => 'Hintergrundliniendicke';
 	@override String get backgroundImageFit => 'Background image fit';
 	@override String get backgroundPattern => 'Hintergrundmuster';
 	@override String get import => 'Importieren';
@@ -716,6 +718,8 @@ class _TranslationsEditorMenuDe extends TranslationsEditorMenuEn {
 	@override String get watchServerReadOnly => 'Bearbeiten ist deaktiviert, solange du den Server beobachtest';
 	@override late final _TranslationsEditorMenuBoxFitsDe boxFits = _TranslationsEditorMenuBoxFitsDe._(_root);
 	@override late final _TranslationsEditorMenuBgPatternsDe bgPatterns = _TranslationsEditorMenuBgPatternsDe._(_root);
+	@override String get lineThickness => 'Liniendicke';
+	@override String get lineThicknessDescription => 'Hintergrundliniendicke';
 }
 
 // Path: editor.newerFileFormat

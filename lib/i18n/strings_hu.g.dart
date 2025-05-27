@@ -13,9 +13,9 @@ import 'strings.g.dart';
 class TranslationsHu extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	TranslationsHu({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsHu({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
-		  $meta = TranslationMetadata(
+		  $meta = meta ?? TranslationMetadata(
 		    locale: AppLocale.hu,
 		    overrides: overrides ?? {},
 		    cardinalResolver: cardinalResolver,
@@ -27,6 +27,9 @@ class TranslationsHu extends Translations {
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
 	late final TranslationsHu _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsHu $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsHu(meta: meta ?? this.$meta);
 
 	// Translations
 	@override late final _TranslationsCommonHu common = _TranslationsCommonHu._(_root);
@@ -65,6 +68,7 @@ class _TranslationsHomeHu extends TranslationsHomeEn {
 	@override late final _TranslationsHomeCreateHu create = _TranslationsHomeCreateHu._(_root);
 	@override String get welcome => 'Üdvözli a Saber';
 	@override String get noFiles => 'Nem található ilyen fájl';
+	@override String get noPreviewAvailable => 'Nincs elérhető előnézet';
 	@override String get createNewNote => 'Kattintson a + gombora egy új jegyzet létrehozásához';
 	@override late final _TranslationsHomeNewFolderHu newFolder = _TranslationsHomeNewFolderHu._(_root);
 	@override late final _TranslationsHomeRenameNoteHu renameNote = _TranslationsHomeRenameNoteHu._(_root);
@@ -700,12 +704,12 @@ class _TranslationsEditorMenuHu extends TranslationsEditorMenuEn {
 	// Translations
 	@override String get clearAllPages => 'Összes oldal törlése';
 	@override String get lineHeight => 'Vonalmagasság';
-	@override String get lineThickness => 'Vonalvastagság';
-	@override String get lineThicknessDescription => 'Háttérvonal vastagsága';
 	@override String get backgroundPattern => 'Háttérminta';
 	@override String get import => 'Importálás';
 	@override late final _TranslationsEditorMenuBoxFitsHu boxFits = _TranslationsEditorMenuBoxFitsHu._(_root);
 	@override late final _TranslationsEditorMenuBgPatternsHu bgPatterns = _TranslationsEditorMenuBgPatternsHu._(_root);
+	@override String get lineThickness => 'Vonalvastagság';
+	@override String get lineThicknessDescription => 'Háttérvonal vastagsága';
 	@override String get watchServer => 'Figyelje a frissítéseket a szerveren';
 	@override String get watchServerReadOnly => 'A szerver figyelése közben a szerkesztés le van tiltva';
 	@override String get lineHeightDescription => 'A beírt jegyzetek szövegméretét is szabályozza';
